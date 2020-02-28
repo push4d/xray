@@ -1,0 +1,71 @@
+{
+	"extensions": [".java",".jsp"],
+	"patterns": [
+		{
+			"title": "Pseudorandom number generator",
+			"pattern": [
+				"import java.util.Random"
+			],
+			"CVSS": "",
+			"description": "This package is flawed and produces predictable values for any given seed which are easily reproducible once the starting seed is identified. Use SecureRandom instead."
+		},
+		{
+			"title": "Weak hash algorithm",
+			"pattern": [
+				"(\"MD5\"|\"SHA-1\"|\"SHA-2\")"
+			],
+			"CVSS": "",
+			"description": "The code appears to use a weak hash algorithm. A safe alternative should be used instead."
+		},
+		{
+			"title": "Weak cryptography algorithm",
+			"pattern": [
+				"(\"DES\"|\"ECB\"|xor|XOR|Xor)",
+				"Cipher\\.(new|get)Instance\\(\\s*\"(DES|ECB)"
+			],
+			"CVSS": "",
+			"description": "The code appears to use a weak cryptography algorithm. A safe alternative should be used instead."
+		},
+		{
+			"title": "Potential vulnerable memory management",
+			"pattern": [
+				"import sun.misc.Unsafe"
+			],
+			"CVSS": "",
+			"description": "This package allows direct access to memory locations, potentially resulting in C-style memory and buffer issues if not used carefully."
+		},
+		{
+			"title": "Arbitrary command execution",
+			"pattern": [
+				"import java.lang.Runtime"
+			],
+			"CVSS": "",
+			"description": "Check the code manually to ensure that RCE does not exist. Desc: The application appears to allow the execution of arbitrary commands."
+		},
+		{
+			"title": "Privileged Code - Possible Risks",
+			"pattern": [
+				"AccessController.doPrivileged"
+			],
+			"CVSS": "",
+			"description": "There is code being executed with system privileges. Check with great care in case the code is inside of a Public Method in a Public Class"
+		},
+		{
+			"title": "XML External Entity",
+			"pattern": [
+				"(XMLConstants\\.FEATURE_SECURE_PROCESSING|XMLInputFactory\\.SUPPORT_DTD)\\s*,\\s*false"
+			],
+			"CVSS": "",
+			"description": "The FEATURE_SECURE_PROCESSING attribute is set to false which can render the application vulnerable to the use of XML bombs. Check the necessity of enabling this feature and check for validation of incoming data."
+		},
+		{
+			"title": "Potential XSS",
+			"pattern": [
+				"<%=(.*\n*)\\w+\\.getParameter\\s*\\(",
+				"<%=(.*\n*)session\\.getAttribute\\s*\\("
+			],
+			"CVSS": "",
+			"description": "The application appears to reflect a HTTP request parameter to the screen with no apparent validation or sanitisation."
+		}
+	]
+}

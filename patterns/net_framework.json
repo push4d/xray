@@ -1,0 +1,70 @@
+{
+	"extensions": [".cs", ".vb", ".bas", ".cls", ".frm", ".frx", ".asp", ".aspx", "web.config", ".xml"],
+	"patterns": [
+		{
+			"title": "Pseudorandom number generator",
+			"pattern": [
+				"(Rnd\\(|Next\\(|NextBytes\\()"
+			],
+			"CVSS": "",
+			"description": "This function is flawed and produces predictable values for any given seed which are easily reproducible once the starting seed is identified."
+		},
+		{
+			"title": "Potential Input Validation Issues",
+			"pattern": [
+				"<pages>\\s*element\\s+with\\s+validateRequest\\s+=\\s+\"false\"",
+				"<pages\\s*validateRequest\\s+=\\s+\"false\""
+			],
+			"CVSS": "",
+			"description": "The application appears to deliberately de-activate the default .NET input validation functionality."
+		},
+		{
+			"title": "Arbitrary command execution",
+			"pattern": [
+				"\\.ProcessStartInfo\\("
+			],
+			"CVSS": "",
+			"description": "Check the code manually to ensure that RCE does not exist. Desc: The application appears to allow the execution of arbitrary commands."
+		},
+		{
+			"title": "Unsafe Object Deserialization",
+			"pattern": [
+				"\\.(Deserialize|ReadObject)\\s*\\("
+			],
+			"CVSS": "",
+			"description": "The code allows objects to be deserialized. This can allow potentially hostile objects to be instantiated directly from data held in the filesystem."
+		},
+		{
+			"title": "Unsafe Code Directive",
+			"pattern": [
+				"\\s*unsafe\\s*{?"
+			],
+			"CVSS": "",
+			"description": "The uses the 'unsafe' directive which allows the use of C-style pointers in the code. This code has an increased risk of unexpected behaviour, including buffer overflows, memory leaks and crashes."
+		},
+		{
+			"title": "Potential XSS",
+			"pattern": [
+				"(Html\\.Raw\\()"
+			],
+			"CVSS": "",
+			"description": "The application uses the potentially dangerous Html.Raw construct."
+		},
+		{
+			"title": ".NET Default Errors Enabled",
+			"pattern": [
+				"<\\s*customErrors\\s+mode\\s*=\\s*\"Off\"\\s*\/>"
+			],
+			"CVSS": "",
+			"description": "The application is configured to display .NET default errors. This can provide an attacker with useful information and should not be used in a live application."
+		},
+		{
+			"title": ".NET Debugging Enabled",
+			"pattern": [
+				"debug\\s*=\\s*\"\\s*true\\s*\""
+			],
+			"CVSS": "",
+			"description": "The application is configured to return .NET debug information. This can provide an attacker with useful information and should not be used in a live application."
+		}
+	]
+}

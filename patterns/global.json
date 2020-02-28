@@ -1,0 +1,65 @@
+{
+	"extensions": [""],
+	"patterns": [
+		{
+			"title": "SQL Injection",
+			"pattern": [
+				"import java.sql.Statement",
+				"(?i)\"(SELECT|UPDATE|INSERT|DELETE)(.*)\" *[^);](\\+|&|\\.)",
+				"(?i)(\\+|&|\\.)\\s*\"(SELECT|UPDATE|INSERT|DELETE)",
+				"(?i)\"(SELECT|UPDATE|INSERT|DELETE).*%s.*\""
+			],
+			"CVSS": "",
+			"description": "The application appears to allow SQL injection via dynamic SQL statements."
+		},
+		{
+			"title": "LDAP Injection",
+			"pattern": [
+				"(\\(uid|\\(userPassword)=\" *[^);](\\+|\n)",
+				"(\\(uid|\\(userPassword)=%s"
+			],
+			"CVSS": "",
+			"description": "The application appears to allow LDAP injection via dynamic LDAP query construction."
+		},
+		{
+			"title": "Hardcoded Password",
+			"pattern": [
+				"(?i)(password|passwd|pass|pwd|key|contrasena|contrasenia|clave)\\s*\\="
+			],
+			"CVSS": "",
+			"description": "The code appears to use a hardcoded password. This can be visible with the use of a decompiler, debugger, disassembler, hex editor, source code, etc..."
+		},
+		{
+			"title": "Unsafe Temporary File Allocation",
+			"pattern": [
+				"(?i)(tempfile|temp_file|filetemp|file_temp|tmpfile|tmp_file|tmpdir|dirtmp|tmp_dir|dir_tmp|tmpdirectory|tmp_directory|directorytmp|directory_tmp)\\s*\\=",
+				"(?i)C:(/|\\|\\\\)Usuarios(/|\\|\\\\)AppData(/|\\|\\\\)Local(/|\\|\\\\)Microsoft(/|\\|\\\\)Windows(/|\\|\\\\)Temporary Internet Files",
+				"(?i)C:(/|\\|\\\\)Usuarios(/|\\|\\\\)AppData(/|\\|\\\\)Local(/|\\|\\\\)Temp",
+				"(?i)C:(/|\\|\\\\)Documents and Settings(/|\\|\\\\)Local Settings(/|\\|\\\\)Temp",
+				"(?i)C:(/|\\|\\\\)Documents and Settings(/|\\|\\\\)Local Settings(/|\\|\\\\)Temporary Internet Files",
+				"(?i)C:(/|\\|\\\\)WINDOWS(/|\\|\\\\)Temp",
+				"(?i)C:(/|\\|\\\\)Temp",
+				"/var/tmp",
+				"/tmp"
+			],
+			"CVSS": "",
+			"description": "The application appears to create a temporary file with a static, hard-coded name. This causes security issues in the form of a classic race condition (an attacker creates a file with the same name between the application's creation and attempted usage) or a symbolic linbk attack where an attacker creates a symbolic link at the temporary file location."
+		},
+		{
+			"title": "URL request sent over HTTP",
+			"pattern": [
+				"(?i)http://"
+			],
+			"CVSS": "",
+			"description": "The URL used in the HTTP request appears to be unencrypted. Check the code manually to ensure that sensitive data is not being submitted."
+		},
+		{
+			"title": "Operation on Primitive Data Type",
+			"pattern": [
+				"(short|int|long)\\s+\\w+\\s*(\\=|\\;)"
+			],
+			"CVSS": "",
+			"description": "The code appears to be carrying out a mathematical operation on a primitive data type. In some circumstances this can result in an overflow and unexpected behaviour. Check the code manually to determine the risk."
+		}
+	]
+}
