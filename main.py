@@ -136,10 +136,10 @@ def main():
 		vulnerabilities = scanProject(project_path)
 
 		# Save the JSON of the vulnerabilities in a JSON file with the filename as the current timestamp returned by python
-		saveFile(vulnerabilities)
+		#saveFile(vulnerabilities)
 
 		# Show vulnerabilities
-		#showVulns(vulnerabilities)
+		showVulns(vulnerabilities)
 
 		# Exit without errors
 		exit(0)
