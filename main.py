@@ -75,6 +75,7 @@ def scanFile(project_file):
 				vulnerabilities.append(vulnerability)
 	except:
 		a=None
+	
 	# Return the vulnerabilities of the Project's File
 	return vulnerabilities
 
@@ -106,7 +107,10 @@ def showVulns(vulns):
 
 
 def saveFile(vulnerabilities):
+	# Name of the file that will contain the info about the vulnerabilities
 	filename_results = str(time.time())
+
+	# JSON Array of vulnerabilities gets saved in a file
 	with open(f"{filename_results}.json", 'w') as f:
 		f.write('[')
 
@@ -117,6 +121,8 @@ def saveFile(vulnerabilities):
 		json.dump(vulnerabilities[-1], f)
 		f.write(']')
 
+	# Name of the file gets returned, in order to be captured by the orchestrator
+	return filename_results
 
 def main():
 	'''
@@ -136,10 +142,10 @@ def main():
 		vulnerabilities = scanProject(project_path)
 
 		# Save the JSON of the vulnerabilities in a JSON file with the filename as the current timestamp returned by python
-		#saveFile(vulnerabilities)
+		saveFile(vulnerabilities)
 
 		# Show vulnerabilities
-		showVulns(vulnerabilities)
+		#showVulns(vulnerabilities)
 
 		# Exit without errors
 		exit(0)

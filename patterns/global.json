@@ -24,7 +24,7 @@
 		{
 			"title": "Hardcoded Password",
 			"pattern": [
-				"(?i)(password|passwd|pass|pwd|key|contrasena|contrasenia|clave)\\s*\\="
+				"(?i)(password|passwd|pass|pwd|key|contrasena|contrasenia|clave|secret)\\s*\\="
 			],
 			"CVSS": "",
 			"description": "The code appears to use a hardcoded password. This can be visible with the use of a decompiler, debugger, disassembler, hex editor, source code, etc..."
@@ -44,22 +44,6 @@
 			],
 			"CVSS": "",
 			"description": "The application appears to create a temporary file with a static, hard-coded name. This causes security issues in the form of a classic race condition (an attacker creates a file with the same name between the application's creation and attempted usage) or a symbolic linbk attack where an attacker creates a symbolic link at the temporary file location."
-		},
-		{
-			"title": "URL request sent over HTTP",
-			"pattern": [
-				"(?i)http://"
-			],
-			"CVSS": "",
-			"description": "The URL used in the HTTP request appears to be unencrypted. Check the code manually to ensure that sensitive data is not being submitted."
-		},
-		{
-			"title": "Operation on Primitive Data Type",
-			"pattern": [
-				"(short|int|long)\\s+\\w+\\s*(\\=|\\;)"
-			],
-			"CVSS": "",
-			"description": "The code appears to be carrying out a mathematical operation on a primitive data type. In some circumstances this can result in an overflow and unexpected behaviour. Check the code manually to determine the risk."
 		}
 	]
 }
